@@ -15299,7 +15299,7 @@ const guessGrid = document.querySelector("[data-guess-grid]")
 const offsetFromDate = new Date(2020, 0, 5)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
-const targetWord = targetWords[Math.floor(dayOffset)]
+const targetWord = targetWords[getRandomInt(0, targetWords.length - 1)]
 
 startInteraction()
 
@@ -15464,7 +15464,15 @@ function checkWinLose(guess, tiles) {
     }
 }
 
+
+// Basic functions used elsewhere
 function capitalize(word) {
     const loweredCase = word.toLowerCase();
     return word[0].toUpperCase() + loweredCase.slice(1);
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
